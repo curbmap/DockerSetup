@@ -55,5 +55,7 @@ RUN service postgresql96 start && su postgres -c /setup_postgres.sh
 WORKDIR /services/
 COPY downloaddata.sh /services/
 RUN chmod 755 downloaddata.sh
+COPY updaterepos.sh /services
+RUN chmod 755 /services/updaterepos.sh
 EXPOSE 8081
 EXPOSE 8080

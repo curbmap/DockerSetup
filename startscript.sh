@@ -4,7 +4,6 @@ service mongod stop
 rm /var/run/mongodb/mongod.pid
 service mongod start
 service postgresql96 start
-service redis-server start
 cd curbmapbackend-js
 git checkout testing
 yarn install --force

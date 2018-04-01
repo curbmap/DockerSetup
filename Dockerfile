@@ -2,6 +2,7 @@ FROM amazonlinux:1
 # Add mongo repo
 COPY mongodb-org-3.6.repo /etc/yum.repos.d/
 RUN yum install -y wget curl
+# Get Node and Yarn
 RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash -
 RUN wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
 RUN wget https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-6-x86_64/pgdg-ami201503-96-9.6-2.noarch.rpm

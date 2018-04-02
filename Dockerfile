@@ -25,8 +25,10 @@ WORKDIR /
 COPY setup_network.sh /
 RUN chmod 755 /setup_network.sh
 RUN /setup_network.sh
+# Set up postgres
 COPY setup_postgres.sh /
 RUN chmod a+x /setup_postgres.sh
+# Make the services directory you will be loading your local files into
 RUN mkdir /services
 WORKDIR /
 RUN sed -i 's/5432/9020/g' /etc/init.d/postgresql96

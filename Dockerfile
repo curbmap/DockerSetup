@@ -33,10 +33,10 @@ RUN mkdir /services
 WORKDIR /
 RUN useradd testing
 RUN sed -i 's/5432/9020/g' /etc/init.d/postgresql96
-RUN sed -i '80s/peer/md5/g' /var/lib/pgsql96/data/pg_hba.conf
 RUN service postgresql96 initdb
 # Just like it is on the actual server
 RUN sed -i 's/\#port = 5432/port = 9020/g' /var/lib/pgsql96/data/postgresql.conf
+RUN sed -i '80s/peer/md5/g' /var/lib/pgsql96/data/pg_hba.conf
 COPY builddb.sql /
 RUN service postgresql96 stop
 RUN service postgresql96 start && su postgres -c /setup_postgres.sh

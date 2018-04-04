@@ -31,7 +31,7 @@ RUN chmod a+x /setup_postgres.sh
 # Make the services directory you will be loading your local files into
 RUN mkdir /services
 WORKDIR /
-RUN useradd testing
+RUN useradd -ms /bin/bash testing
 RUN sed -i 's/5432/9020/g' /etc/init.d/postgresql96
 RUN service postgresql96 initdb
 # Just like it is on the actual server

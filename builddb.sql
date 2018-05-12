@@ -1,7 +1,7 @@
 GRANT ALL ON SCHEMA public TO testing;
 
 GRANT ALL ON SCHEMA public TO PUBLIC;
--- DROP DATABASE "CurbMapUsers";
+--DROP DATABASE "CurbMapUsers";
 
 GRANT ALL ON DATABASE "CurbMapUsers" TO testing;
 
@@ -62,7 +62,7 @@ CREATE TABLE public.standard_user
     "badge_updatedAt" timestamp without time zone,
     score bigint,
     "score_updatedAt" timestamp without time zone,
-    badge integer DEFAULT 1,
+    badge BOOLEAN[] DEFAULT '{FALSE}'::BOOLEAN[],
     CONSTRAINT standard_user_pkey PRIMARY KEY (id_user),
     CONSTRAINT uk_ari93f4i6r669u3vvtno4ni9p UNIQUE (user_email),
     CONSTRAINT uk_ow3udbl7wpnfa58r7vpw3kp97 UNIQUE (username)

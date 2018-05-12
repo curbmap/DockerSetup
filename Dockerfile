@@ -31,15 +31,17 @@ RUN chmod a+x /setup_postgres.sh
 # Make the services directory you will be loading your local files into
 RUN mkdir /services
 WORKDIR /
-RUN useradd -ms /bin/bash testing
 RUN sed -i 's/5432/9020/g' /etc/init.d/postgresql96
 RUN service postgresql96 initdb
 # Just like it is on the actual server
 RUN sed -i 's/\#port = 5432/port = 9020/g' /var/lib/pgsql96/data/postgresql.conf
-RUN sed -i '80s/peer/md5/g' /var/lib/pgsql96/data/pg_hba.conf
 COPY builddb.sql /
 RUN service postgresql96 stop
 RUN service postgresql96 start && su postgres -c /setup_postgres.sh
+RUN useradd -ms /bin/bash testing
+RUN sed -i '80s/peer/md5/g' /var/lib/pgsql96/data/pg_hba.conf
+RUN sed -i 's/ident/md5/g' /var/lib/pgsql96/data/pg_hba.conf
+RUN service postgresql96 start
 EXPOSE 8081
 EXPOSE 8080
 EXPOSE 9020

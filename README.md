@@ -1,5 +1,9 @@
 # DockerSetup
 Docker Setup configuration
+# What is <current_dir>
+- Take the sample_services.tar.bz file and unbzip2 and untar it. 
+- Inside the services directory it creates clone or place your edited curbmapauth-js and curbmapbackend-js servers
+- Edit those servers as needed either in the container or in your current environment
 
 # This repository is set up to autobuild on hub.docker.com. 
 ### To get the prebuilt image:
